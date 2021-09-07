@@ -4,7 +4,7 @@
   "main": "dist/server.js",
   "license": "MIT",
   "scripts": {
-    "dev:server": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn --clear src/server.ts",
+    "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn --clear src/server.ts",
     "start": "node dist/server.js",
     "build": "yarn tsc"
   },
