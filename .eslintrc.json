@@ -1,44 +1,28 @@
 {
   "env": {
     "es2021": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
-  "extends": [
-    "standard",
-    "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
-  ],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
+  "extends": ["standard", "plugin:@typescript-eslint/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["prettier", "@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "eslint-plugin-import-helpers"],
   "rules": {
-    "@typescript-eslint/explicit-module-boundary-types": ["warn", { "allowArgumentsExplicitlyTypedAsAny": true }],
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": "**/*.spec.js" }],
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "_" }],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.spec.js"] }],
     "import/extensions": ["error", "ignorePackages", { "ts": "never" }],
-    "@typescript-eslint/explicit-function-return-type": ["off"],
-    "@typescript-eslint/no-explicit-any": "off",
     "import/prefer-default-export": "off",
-    "@typescript-eslint/camelcase": "off",
+    "lines-between-class-members": "off",
     "class-methods-use-this": "off",
     "no-useless-constructor": "off",
-    "no-prototype-builtins": "off",
-    "no-restricted-syntax": "off",
-    "max-classes-per-file": "off",
-    "no-underscore-dangle": "off",
-    "prettier/prettier": "error",
+    "import/no-unresolved": "error",
     "no-empty-function": "off",
     "no-console": "off",
     "no-shadow": "off",
-    "no-new": "off",
+    "camelcase": "off",
     "@typescript-eslint/naming-convention": [
       "error",
       {
@@ -53,11 +37,15 @@
     "import-helpers/order-imports": [
       "warn",
       {
-        // "groups": ["module", "/^@server/shared/", "/^@/", ["parent", "sibling", "index"]],
+        "newlinesBetween": "always",
         "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
-        "alphabetize": { "order": "asc", "ignoreCase": true },
-        "newlinesBetween": "always" // new line between groups
+        "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
   }
 }
