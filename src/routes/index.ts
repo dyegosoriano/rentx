@@ -8,4 +8,4 @@ const routes = Router()
 routes.use('/specifications', specificationsRoutes)
 routes.use('/categories', categoriesRoutes)
 
-export default routes
+export { routes }
