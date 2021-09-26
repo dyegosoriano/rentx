@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn --clear src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
     "start": "node dist/server.js",
     "build": "yarn tsc"
   },
