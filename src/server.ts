@@ -1,3 +1,6 @@
+import 'reflect-metadata'
+import './database'
+
 import express from 'express'
 import swaggerUi from 'swagger-ui-express'
 
@@ -11,4 +14,4 @@ app.use(express.json())
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 app.use(routes)
 
-app.listen(port, () => console.log(`🚀  Server is running port: ${port}`))
+app.listen(port, () => console.log(`🚀 Server is running port: ${port}`))
