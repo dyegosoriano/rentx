@@ -1,13 +1,13 @@
-FROM node
+FROM node:lts-alpine3.13
 
 WORKDIR /usr/app
 
 COPY package.json ./
 
-RUN npm install
+RUN yarn
 
 COPY . .
 
 EXPOSE 3333
 
-CMD [ "npm", "run", "dev:server" ]
+CMD [ "yarn", "dev:server" ]
