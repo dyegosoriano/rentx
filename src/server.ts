@@ -1,4 +1,5 @@
 import 'reflect-metadata'
+import './shared/container'
 import './database'
 
 import express from 'express'
