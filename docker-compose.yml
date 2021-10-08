@@ -1,10 +1,10 @@
-version: "3.7"
+version: '3.7'
 
 services:
   database:
     image: postgres
-    container_name: docker-postgres
-    restart: always
+    container_name: rentx-database
+    # restart: always
     ports:
       - 5432:5432
     environment:
@@ -22,7 +22,7 @@ services:
       - .:/usr/app
     links:
       - database
-    depends_on: 
+    depends_on:
       - database
 
 volumes:
