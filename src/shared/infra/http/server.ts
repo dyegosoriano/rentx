@@ -1,15 +1,15 @@
 import 'reflect-metadata'
 import 'express-async-errors'
-import './database'
 
 import express, { NextFunction, Request, Response } from 'express'
 import swaggerUi from 'swagger-ui-express'
 
-import { AppError } from '@errors/AppError'
+import { AppError } from '@shared/errors/AppError'
+import { routes } from '@shared/infra/http/routes'
+import '@shared/infra/typeorm'
 import '@shared/container'
 
-import { routes } from './routes'
-import swaggerFile from './swagger.json'
+import swaggerFile from '../../../swagger.json'
 
 const port = process.env.PORT || 3333
 const app = express()
