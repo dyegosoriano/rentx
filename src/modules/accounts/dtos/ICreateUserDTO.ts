@@ -1,5 +1,5 @@
 interface ICreateUserDTO {
-  driver_licence: string
+  driver_license: string
   password: string
   avatar?: string
   email: string

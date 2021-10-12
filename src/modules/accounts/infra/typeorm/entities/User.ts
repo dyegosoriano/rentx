@@ -16,7 +16,7 @@ class User {
   email: string
 
   @Column()
-  driver_licence: string
+  driver_license: string
 
   @Column()
   avatar: string
