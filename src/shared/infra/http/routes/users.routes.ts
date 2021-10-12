@@ -13,7 +13,8 @@ const createUserController = new CreateUserController()
 const usersRoutes = Router()
 const uploadAvatar = multer(uploadConfig.upload('./tmp/avatar'))
 
-usersRoutes.post('/', createUserController.handle)
-usersRoutes.patch('/', ensureAuthenticate, uploadAvatar.single('avatar'), updateUserAvatarController.handle)
+usersRoutes
+  .patch('/', ensureAuthenticate, uploadAvatar.single('avatar'), updateUserAvatarController.handle)
+  .post('/', createUserController.handle)
 
 export { usersRoutes }

@@ -14,10 +14,9 @@ const upload = multer({
   dest: './tmp'
 })
 
-categoriesRoutes.post('/', createCategoryController.handle)
-
-categoriesRoutes.get('/', listCategoryController.handle)
-
-categoriesRoutes.post('/import', upload.single('file'), importCategoryController.handle)
+categoriesRoutes
+  .post('/import', upload.single('file'), importCategoryController.handle)
+  .post('/', createCategoryController.handle)
+  .get('/', listCategoryController.handle)
 
 export { categoriesRoutes }
