@@ -6,16 +6,16 @@ import swaggerUi from 'swagger-ui-express'
 
 import { AppError } from '@shared/errors/AppError'
 import { routes } from '@shared/infra/http/routes'
-import '@shared/infra/typeorm'
+import createConnection from '@shared/infra/typeorm'
 import '@shared/container'
 
 import swaggerFile from '../../../swagger.json'
 
 const port = process.env.PORT || 3333
 const app = express()
+createConnection()
 
 app.use(express.json())
-
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 app.use(routes)
 
