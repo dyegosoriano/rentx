@@ -4,7 +4,7 @@ import { ICreateUserDTO } from '../../dtos/ICreateUserDTO'
 import { IUsersRepository } from '../IUsersRepository'
 
 class UsersRepositoryInMemory implements IUsersRepository {
-  repository: User[] = []
+  private repository: User[] = []
 
   async create({ driver_license, password, email, name }: ICreateUserDTO): Promise<void> {
     const user = new User()
