@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+
 import { RentalsRepositoryInMemory } from '@modules/rentals/repositories/in-memory/RentalsRepositoryInMemory'
 import { AppError } from '@shared/errors/AppError'
 
@@ -7,7 +9,7 @@ let rentalsRepositoryInMemory: RentalsRepositoryInMemory
 let createRentalUseCase: CreateRentalUseCase
 
 const rentalObject = {
-  expected_return_date: new Date(),
+  expected_return_date: dayjs().add(1, 'day').toDate(),
   user_id: '12345',
   car_id: '54321'
 }
@@ -37,5 +39,11 @@ describe('Create Rental', () => {
       await createRentalUseCase.execute(rentalObject)
       await createRentalUseCase.execute({ expected_return_date: new Date(), user_id: 'teste', car_id: '54321' })
     }).rejects.toEqual(new AppError('Car is unavailable'))
+  })
+
+  it('should not be able to create a new rental with invalid return time', async () => {
+    expect(async () => {
+      await createRentalUseCase.execute({ expected_return_date: dayjs().toDate(), user_id: 'teste', car_id: '54321' })
+    }).rejects.toEqual(new AppError('Invalid return time!'))
   })
 })
