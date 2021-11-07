@@ -15,7 +15,7 @@ class CreateCarUseCase {
   async execute(data: ICreateCarDTO): Promise<Car> {
     const { license_plate, category_id, description, fine_amount, daily_rate, brand, name } = data
 
-    const carAlreadyExist = await this.carsRepository.findByLicencePlate(license_plate)
+    const carAlreadyExist = await this.carsRepository.findByLicensePlate(license_plate)
     if (carAlreadyExist) throw new AppError('Car already exist!')
 
     const car = await this.carsRepository.create({
