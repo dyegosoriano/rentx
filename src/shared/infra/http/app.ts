@@ -9,7 +9,7 @@ import { routes } from '@shared/infra/http/routes'
 import createConnection from '@shared/infra/typeorm'
 import '@shared/container'
 
-import swaggerFile from '../../../swagger.json'
+import swaggerFile from './swagger.json'
 
 const app = express()
 createConnection()
