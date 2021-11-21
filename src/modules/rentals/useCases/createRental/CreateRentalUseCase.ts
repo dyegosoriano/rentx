@@ -15,7 +15,7 @@ interface IRequest {
 @injectable()
 class CreateRentalUseCase {
   constructor(
-    @inject('RentalRepository')
+    @inject('RentalsRepository')
     private rentalsRepository: IRentalsRepository,
     @inject('DayjsDateProvider')
     private dateProvider: IDateProvider,

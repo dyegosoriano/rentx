@@ -18,6 +18,6 @@ import { IRentalsRepository } from '@modules/rentals/repositories/IRentalsReposi
 container.registerSingleton<ISpecificationRepository>('SpecificationRepository', SpecificationRepository)
 container.registerSingleton<ICategoriesRepository>('CategoriesRepository', CategoriesRepository)
 container.registerSingleton<ICarsImageRepository>('CarsImageRepository', CarsImageRepository)
-container.registerSingleton<IRentalsRepository>('RentalRepository', RentalsRepository)
+container.registerSingleton<IRentalsRepository>('RentalsRepository', RentalsRepository)
 container.registerSingleton<IUsersRepository>('UsersRepository', UsersRepository)
 container.registerSingleton<ICarsRepository>('CarsRepository', CarsRepository)
