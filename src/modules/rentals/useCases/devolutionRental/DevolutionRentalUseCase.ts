@@ -16,7 +16,8 @@ class DevolutionRentalUseCase {
   constructor(
     @inject('RentalsRepository')
     private rentalsRepository: IRentalsRepository,
-    @inject('CarsRepository') private carsRepository: ICarsRepository,
+    @inject('CarsRepository')
+    private carsRepository: ICarsRepository,
     @inject('DayjsDateProvider')
     private dateProvider: IDateProvider
   ) {}

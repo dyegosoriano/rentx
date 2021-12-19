@@ -28,10 +28,8 @@ describe('Create Car', () => {
   })
 
   it('should not be able to create a car with exists license plate', async () => {
-    expect(async () => {
-      await createCarUseCase.execute(carObject)
-      await createCarUseCase.execute(carObject)
-    }).rejects.toEqual(new AppError('Car already exist!'))
+    await createCarUseCase.execute(carObject)
+    await expect(createCarUseCase.execute(carObject)).rejects.toEqual(new AppError('Car already exist!'))
   })
 
   it('should not be able to create a car with available true by default', async () => {
