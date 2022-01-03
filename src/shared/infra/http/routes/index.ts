@@ -13,7 +13,7 @@ const routes = Router()
 routes
   .use('/specifications', specificationsRoutes)
   .use('/categories', categoriesRoutes)
-  .use('/forgot', passwordRoutes)
+  .use('/password', passwordRoutes)
   .use('/rental', rentalRoutes)
   .use('/users', usersRoutes)
   .use('/cars', carsRoutes)
