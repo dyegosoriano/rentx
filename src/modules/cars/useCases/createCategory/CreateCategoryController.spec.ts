@@ -23,7 +23,7 @@ describe('Create Category Controller', () => {
     `)
 
     const responseToken = await request(app).post('/sessions').send({ email: 'admin@rentx.com', password: 'admin' })
-    token = responseToken.body.token
+    token = responseToken.body.refresh_token
   })
 
   afterAll(async () => {
