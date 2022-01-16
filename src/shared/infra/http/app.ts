@@ -5,6 +5,7 @@ import 'dotenv/config'
 import express, { NextFunction, Request, Response } from 'express'
 import swaggerUi from 'swagger-ui-express'
 
+import upload from '@config/upload'
 import { AppError } from '@shared/errors/AppError'
 import { routes } from '@shared/infra/http/routes'
 import createConnection from '@shared/infra/typeorm'
@@ -17,6 +18,8 @@ createConnection()
 
 app.use(express.json())
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+app.use('/avatar', express.static(`${upload.tmpFolder}/avatar`))
+app.use('/cars', express.static(`${upload.tmpFolder}/cars`))
 app.use(routes)
 
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
