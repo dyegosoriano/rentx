@@ -16,15 +16,12 @@ const uploadCarImagesController = new UploadCarImagesController()
 const createCarsController = new CreateCarController()
 
 const carsRoutes = Router()
-const upload = multer(uploadConfig.upload('./tmp/cars'))
+const upload = multer(uploadConfig)
 
 carsRoutes
   .post('/images/:id', ensureAuthenticate, ensureAdmin, upload.array('images'), uploadCarImagesController.handle)
-
   .post('/specifications/:id', ensureAuthenticate, ensureAdmin, createCarSpecificationController.handle)
-
   .get('/available', ensureAuthenticate, listAvailableCarsController.handle)
-
   .post('/', ensureAuthenticate, ensureAdmin, createCarsController.handle)
 
 export { carsRoutes }
