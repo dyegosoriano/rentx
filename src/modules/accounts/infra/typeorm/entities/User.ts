@@ -30,7 +30,7 @@ class User {
 
   @Expose({ name: 'avatar_url' })
   avatar_url(): string {
-    switch (process.env.DISK) {
+    switch (process.env.DISK_PROVIDER) {
       case 'local':
         return `${process.env.API_URL}/avatar/${this.avatar}`
       case 's3':
