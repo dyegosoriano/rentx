@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+  database:
+    image: postgres:14.1-alpine
+    container_name: rentx-database
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=rentx
+    volumes:
+      - pgdata:/data/postgres
+    networks:
+      - rentx-network
+
+  api:
+    build: .
+    container_name: rentx-api
+    command: yarn dev:server
+    ports:
+      - 3333:3333
+    environment:
+      - DB_HOST=rentx-database
+    volumes:
+      - .:/usr/app
+    networks:
+      - rentx-network
+    depends_on:
+      - database
+
+volumes:
+  pgdata:
+    driver: local
+
+networks:
+  rentx-network:
+    driver: bridge

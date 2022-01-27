@@ -5,13 +5,14 @@
   "license": "MIT",
   "scripts": {
     "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn --clear src/shared/infra/http/server.ts",
-    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
-    "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts",
-    "start": "NODE_ENV=production node dist/shared/infra/http/server.js",
+    "start": "NODE_ENV=production yarn typeorm migration:run && node dist/shared/infra/http/server.js",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "test": "NODE_ENV=test jest --runInBand --detectOpenHandles",
     "test:watch": "NODE_ENV=test jest --watch --maxWorkers=25%",
+    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
+    "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts",
     "db:migrate:make": "yarn typeorm migration:create -n",
+    "db:migrate:revert": "yarn typeorm migration:revert",
     "db:migrate": "yarn typeorm migration:run"
   },
   "dependencies": {
