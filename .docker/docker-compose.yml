@@ -31,6 +31,16 @@ services:
     networks:
       - rentx-network
 
+  redis:
+    container_name: rentx-redis
+    image: redis:6.2-alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - rentx-volume:/data/redis
+    networks:
+      - rentx-network
+
 volumes:
   rentx-volume:
     driver: local
