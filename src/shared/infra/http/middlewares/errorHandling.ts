@@ -3,11 +3,11 @@ import { NextFunction, Request, Response } from 'express'
 import { AppError } from '@shared/errors/AppError'
 
 export default {
-  notFound(_request: Request, _response: Response, _next: NextFunction) {
+  notFound(_request: Request, _response: Response, _next: NextFunction): void {
     throw new AppError('Route not found', 404)
   },
 
-  globalErrors(err: Error, _request: Request, response: Response, _next: NextFunction) {
+  globalErrors(err: Error, _request: Request, response: Response, _next: NextFunction): Response {
     if (err instanceof AppError) {
       return response.status(err.statusCode).json({
         status: 'error',
