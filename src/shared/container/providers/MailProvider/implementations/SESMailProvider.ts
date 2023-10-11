@@ -2,11 +2,9 @@ import AWS from 'aws-sdk'
 import fs from 'fs'
 import handlebars from 'handlebars'
 import nodemailer, { Transporter } from 'nodemailer'
-import { injectable } from 'tsyringe'
 
 import { IMailProvider, ISendMail } from '../IMailProvider'
 
-@injectable()
 class SESMailProvider implements IMailProvider {
   private client: Transporter
 
